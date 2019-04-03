@@ -1,7 +1,9 @@
-{% if lastOneQuestion %}
-    <div style="height:400px; width:400px;">
-            {% for question in lastOneQuestion %}
-        <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="{% url 'detail' question.id %}">{{ question.question_text }}</a></li>
     {% endfor %}
-    </div>
-{% endif%}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
